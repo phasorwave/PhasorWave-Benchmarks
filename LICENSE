@@ -1,0 +1,167 @@
+PHASORWAVE DUAL LICENSE (OPEN-CORE AGPLv3 / MIT + COMMERCIAL PRO/ENTERPRISE)
+Copyright (c) 2026 PhasorWave DeepTech Systems <research@phasorwave.dev>
+
+================================================================================
+PART I — OPEN-CORE COMMUNITY EDITION (DUAL AGPLv3 / MIT)
+================================================================================
+
+The Open-Core Community components of PhasorWave — explicitly limited to:
+  1. The unified SIMD platform abstraction header (`include/simd_platform.hpp`)
+  2. The base complex I/Q vector kernel (`include/phy_simd.hpp`, `src/phy_simd.cpp`)
+  3. The Community WebAssembly simulator UI (`frontend/`) and Community WASM
+     wrappers (`wasm_simd_complex_multiply`, `wasm_community_fspl_atten`, and
+     diagonal low-order Volterra K<=3, M<=2, L=0 in `src/wasm_bindings.cpp`)
+  4. Reproducible benchmark and accuracy validation scripts (`benchmarks/`)
+
+are dual-licensed. At your option, you may use, copy, modify, and distribute
+these Open-Core components under EITHER:
+
+  (A) GNU Affero General Public License, Version 3.0 (AGPL-3.0-or-later)
+      Full text: https://www.gnu.org/licenses/agpl-3.0.txt
+
+  OR
+
+  (B) The MIT License:
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of these Open-Core software components and associated documentation files
+      (the "Software"), to deal in the Software without restriction, including
+      without limitation the rights to use, copy, modify, merge, publish,
+      distribute, sublicense, and/or sell copies of the Software, and to permit
+      persons to whom the Software is furnished to do so, subject to the
+      following conditions:
+
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+      FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+      DEALINGS IN THE SOFTWARE.
+
+================================================================================
+PART II — COMMERCIAL END-USER LICENSE AGREEMENT (EULA) (PRO & ENTERPRISE TIERS)
+================================================================================
+
+ALL RIGHTS RESERVED — PROPRIETARY COMMERCIAL SOFTWARE.
+
+1. Scope and Covered Proprietary Modules
+--------------------------------------------------------------------------------
+The Pro and Enterprise editions of PhasorWave (collectively, the "Commercial
+Software") are proprietary commercial software owned exclusively by PhasorWave
+DeepTech Systems ("Licensor", https://phasorwave.dev) and are NOT covered by
+AGPLv3 or MIT. The Commercial Software includes, without limitation:
+  - Full ITU-R P.618-14 rain attenuation kernels (`ITU_P618_RainModel`) [Pro+]
+  - Dynamic Hufnagel-Valley (HV-5/7) optical atmospheric turbulence kernels
+    (`OpticalTurbulence_HV57`) [Enterprise Exclusive]
+  - High-order Generalized Memory Polynomial (GMP) DPD modeling and two-pass
+    DGKS QR Indirect Learning Architecture (`DPD_GMP_Model`) [Enterprise Exclusive]
+  - GNU Radio 4.0 Out-of-Tree plugin blocks (`gr-phasorwave`:
+    `itu_p618_channel`, `optical_hv57_channel`, `dpd_gmp_extract`,
+    `dpd_gmp_apply`) [Pro / Enterprise]
+  - Compiled binary distributions, extensions, and shared libraries (`.pyd`,
+    `.so`, `.whl`, `libphasorwave_core.so`, and unlocked C++23 SIMD execution
+    engines)
+  - Offline Ed25519 cryptographic license enforcement (`phy::LicenseGuard`) and
+    the Cloudflare Worker / KMS licensing infrastructure (`licensing/`)
+
+2. License Grant, Cryptographic Activation, and Restrictions
+--------------------------------------------------------------------------------
+Subject to timely payment of all applicable license fees and continuous
+compliance with this EULA, Licensor grants the purchasing entity or individual
+("Licensee") a limited, non-exclusive, non-transferable, non-sublicensable,
+revocable license to install and execute the Commercial Software strictly
+within the authorized tier (Pro or Enterprise), seat/deployment scope, and
+term specified in the applicable order and `.lic` token.
+
+Execution of Pro and Enterprise modules requires a valid, unexpired, and
+unrevoked `.lic` token cryptographically signed with PhasorWave's Ed25519
+private key and verified offline against the embedded public key
+(`kPhasorWavePublicKey`).
+
+Unauthorized reproduction, distribution, decompilation, disassembly, reverse
+engineering, removal or circumvention of `LicenseGuard` checks, or
+redistribution of source distributions (`sdist`) or unlocked WASM benchmark
+binaries outside their authorized evaluation scope is strictly prohibited
+without a separate written commercial license agreement from PhasorWave
+DeepTech Systems (https://phasorwave.dev | licenses@phasorwave.dev).
+
+3. Disclaimer of Warranties ("AS IS" and "AS AVAILABLE")
+--------------------------------------------------------------------------------
+THE COMMERCIAL SOFTWARE — INCLUDING ALL COMPILED BINARIES (`.pyd`, `.so`,
+`.whl`, AND SHARED LIBRARIES), GNU RADIO 4.0 OUT-OF-TREE BLOCKS
+(`gr-phasorwave`), AND C++23 SIMD COMPUTATIONAL ENGINES (INCLUDING AVX2/FMA3
+AND WASM SIMD128 TARGETS) — IS PROVIDED STRICTLY "AS IS" AND "AS AVAILABLE",
+WITH ALL FAULTS AND DEFECTS, WITHOUT WARRANTY OF ANY KIND.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, LICENSOR EXPRESSLY DISCLAIMS
+ALL WARRANTIES AND CONDITIONS, WHETHER EXPRESS, IMPLIED, STATUTORY, OR
+OTHERWISE, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT,
+ACCURACY OF NUMERICAL OR PHYSICAL MODELING OUTPUTS, NON-INFRINGEMENT, OR
+ABSENCE OF ERRORS OR DEFECTS. LICENSOR DOES NOT WARRANT THAT THE COMMERCIAL
+SOFTWARE WILL BE ERROR-FREE, UNINTERRUPTED, OR COMPATIBLE WITH HARDWARE
+LACKING DOCUMENTED INSTRUCTION-SET REQUIREMENTS (SUCH AS X86-64 AVX2 + FMA3).
+
+4. Limitation of Liability & High-Risk / Safety-Critical Exclusion
+--------------------------------------------------------------------------------
+PhasorWave is a scientific simulation, mathematical modeling, and signal-
+processing software tool intended solely for research, engineering analysis,
+and laboratory development.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE AUTHOR
+OR LICENSOR (PHASORWAVE DEEPTECH SYSTEMS) BE LIABLE TO LICENSEE OR ANY THIRD
+PARTY FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE,
+OR EXEMPLARY DAMAGES WHATSOEVER — INCLUDING, WITHOUT LIMITATION, LOSS OF DATA,
+LOSS OF PROFITS OR REVENUE, BUSINESS INTERRUPTION, RF OR OPTICAL LINK
+MISCALIBRATION, HARDWARE FAILURE, OR OPERATIONAL FAILURES — ARISING OUT OF OR
+RELATING TO THE USE OF, MISUSE OF, OR INABILITY TO USE THE COMMERCIAL SOFTWARE,
+EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND
+REGARDLESS OF THE LEGAL THEORY (CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY,
+OR OTHERWISE). WHERE MANDATORY APPLICABLE LAW DOES NOT PERMIT THE COMPLETE
+EXCLUSION OF CERTAIN DAMAGES, LICENSOR'S AGGREGATE CUMULATIVE LIABILITY SHALL
+NOT EXCEED THE LICENSE FEES ACTUALLY PAID BY LICENSEE FOR THE SPECIFIC `.lic`
+LICENSE GIVING RISE TO THE CLAIM.
+
+HIGH-RISK AND SAFETY-CRITICAL APPLICATIONS:
+PhasorWave is NOT designed, fault-tolerant, validated, or certified for
+safety-critical operation. Licensor does NOT authorize the use of PhasorWave
+or its outputs as a sole decision-making, control, or operational system in
+life-safety applications, human-life support, air navigation or aviation,
+spacecraft or spaceflight control, autonomous defense systems, or nuclear or
+medical facilities without prior independent verification, validation, and
+formal regulatory certification performed solely by the Licensee at Licensee's
+own risk and liability.
+
+5. 14-Day Refund Policy
+--------------------------------------------------------------------------------
+Commercial license purchases (Pro and Enterprise tiers) processed through
+PhasorWave's Merchant of Record, Lemon Squeezy, are covered by a fourteen (14)
+calendar-day, no-questions-asked full refund policy measured from the original
+date of purchase.
+
+Licensee may request a full refund within fourteen (14) calendar days of
+purchase if the Commercial Software does not meet Licensee's technical
+expectations or presents hardware or platform incompatibilities (for example,
+host CPUs lacking mandatory x86-64 AVX2 + FMA3 instruction-set support).
+
+To exercise this refund right within the 14-day window, Licensee may either:
+  (a) Contact PhasorWave Licensing Support at licenses@phasorwave.dev (quoting
+      the purchase email and Lemon Squeezy order ID); or
+  (b) Request and manage the refund directly through Lemon Squeezy (via the
+      order receipt or Lemon Squeezy customer portal).
+
+Upon refund processing, the corresponding commercial license grant terminates
+immediately, the issued `.lic` cryptographic license key is permanently
+revoked and invalidated, and Licensee must immediately cease all use of the
+Commercial Software and destroy all copies of the revoked `.lic` token and
+proprietary binaries.
+
+6. Commercial Contact & Merchant of Record
+--------------------------------------------------------------------------------
+Website & Documentation : https://phasorwave.dev
+Commercial Licensing    : licenses@phasorwave.dev
+Merchant of Record      : Lemon Squeezy
+General / Research      : research@phasorwave.dev
